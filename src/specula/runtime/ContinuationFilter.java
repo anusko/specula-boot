@@ -4,9 +4,9 @@ import asmlib.Type;
 
 public class ContinuationFilter {
 
-	private final String[] prefixes = { "java.", "sun.", "jvstm.", "transactifier.", "specula.",
-			"org.eclipse.tptp.", "com.yourkit.runtime.", "org.apache.", "xtramy.",
-			"com.google.", };
+	private final String[] prefixes = { "java.", "sun.", "jvstm.", "transactifier.",
+			"specula.runtime.", "specula.core.",
+			"org.eclipse.tptp.", "com.yourkit.runtime.", "org.apache.", "com.google.", };
 
 		protected String[] prefixes() {
 			return prefixes;
@@ -17,9 +17,7 @@ public class ContinuationFilter {
 			return filter(Type.fromAsm(type));
 		}
 
-		public boolean filter(Type type) {
-			if (type.commonName().equals("specula.jvstm.VBox")) return false;
-			
+		public boolean filter(Type type) {			
 			for (String s : prefixes()) if (type.commonName().startsWith(s)) return true;
 			return false;
 		}

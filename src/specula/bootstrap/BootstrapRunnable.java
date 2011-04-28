@@ -20,8 +20,7 @@ public final class BootstrapRunnable implements Runnable {
 	}
 	
 	public static void main(String[] args) {
-//		jvstm.Transaction.setTransactionFactory(new specula.jvstm.SpeculaTransactionFactory());
-//		specula.ThreadContext.setThreadContextFactory(new specula.jvstm.JVSTMThreadContextFactory());
+//		specula.core.ThreadContext.setThreadContextFactory(new specula.jvstm.JVSTMThreadContextFactory());
 		specula.core.ThreadContext.setThreadContextFactory(new xtramy.stm.jvstm.XtramyThreadContextFactory());
 		
 		new BootstrapRunnable(args).run();
